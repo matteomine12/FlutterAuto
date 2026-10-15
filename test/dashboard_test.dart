@@ -9,6 +9,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 class FakeDeviceService extends DeviceService {
   int mapsOpened = 0;
+  int androidAutoOpened = 0;
   double volume = .5;
   @override
   Future<double> getVolume() async => volume;
@@ -20,6 +21,11 @@ class FakeDeviceService extends DeviceService {
   @override
   Future<void> openMaps() async {
     mapsOpened++;
+  }
+
+  @override
+  Future<void> openAndroidAuto() async {
+    androidAutoOpened++;
   }
 
   @override
@@ -102,6 +108,24 @@ void main() {
     await tester.tap(find.text('Open Google Maps'));
     await tester.pump();
     expect(device.mapsOpened, 1);
+    await tester.pumpWidget(const SizedBox());
+  });
+
+  testWidgets('Android Auto action opens the USB connection screen', (
+    tester,
+  ) async {
+    final device = FakeDeviceService();
+    await pumpDashboard(tester, const Size(1280, 900), device: device);
+    await tester.ensureVisible(find.text('Android Auto'));
+    await tester.tap(find.text('Android Auto'));
+    await tester.pumpAndSettle();
+    expect(
+      find.text('Connect your phone via USB to use Android Auto.'),
+      findsOneWidget,
+    );
+    await tester.tap(find.text('Connect via USB'));
+    await tester.pumpAndSettle();
+    expect(device.androidAutoOpened, 1);
     await tester.pumpWidget(const SizedBox());
   });
 

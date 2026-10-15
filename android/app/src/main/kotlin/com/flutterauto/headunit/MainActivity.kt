@@ -46,6 +46,19 @@ class MainActivity : FlutterActivity() {
                             startActivity(Intent(Settings.ACTION_SETTINGS))
                             result.success(null)
                         }
+                        "openAndroidAuto" -> {
+                            // Open Android Auto projection when available. This device acts as the
+                            // headunit display for a phone connected over USB.
+                            val intent = packageManager.getLaunchIntentForPackage(
+                                "com.google.android.projection.gearhead",
+                            )
+                            if (intent != null) {
+                                startActivity(intent)
+                            } else {
+                                throw ActivityNotFoundException()
+                            }
+                            result.success(null)
+                        }
                         "getVolume" -> {
                             if (audio.isVolumeFixed) {
                                 result.error("fixed_volume", "This device has fixed media volume.", null)

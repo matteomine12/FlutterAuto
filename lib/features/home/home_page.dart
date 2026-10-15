@@ -9,6 +9,7 @@ import '../../widgets/module_label.dart';
 import '../media/media_controller.dart';
 import '../media/media_module.dart';
 import '../weather/weather_module.dart';
+import 'android_auto_screen.dart';
 import 'clock_module.dart';
 import 'device_sheets.dart';
 import 'navigation_module.dart';
@@ -127,6 +128,14 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
           },
           onSystemSettings: () => _runDeviceAction(_device.openSettings),
         ),
+      ),
+    );
+  }
+
+  void _openAndroidAuto() {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => AndroidAutoScreen(device: _device),
       ),
     );
   }
@@ -258,6 +267,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
                           onMedia: _showMedia,
                           onPhone: () => _runDeviceAction(_device.openPhone),
                           onSettings: _openSettings,
+                          onAndroidAuto: _openAndroidAuto,
                           volume: _volume,
                           onVolumeChanged: (value) {
                             _changingVolume = true;
