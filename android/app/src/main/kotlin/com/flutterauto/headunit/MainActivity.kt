@@ -46,9 +46,7 @@ class MainActivity : FlutterActivity() {
                             startActivity(Intent(Settings.ACTION_SETTINGS))
                             result.success(null)
                         }
-                        "openAndroidAuto", "openAndroidAutoProjection", "openAndroidAutoScreen",
-                        "startAndroidAuto", "launchAndroidAuto", "connectAndroidAuto",
-                        "showAndroidAuto" -> {
+                        "openAndroidAuto" -> {
                             // Open Android Auto projection when available. This device acts as the
                             // headunit display for a phone connected over USB.
                             val intent = packageManager.getLaunchIntentForPackage(

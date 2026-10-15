@@ -15,18 +15,6 @@ class DeviceService {
   Future<void> openSettings() => _channel.invokeMethod<void>('openSettings');
   Future<void> openAndroidAuto() =>
       _channel.invokeMethod<void>('openAndroidAuto');
-  Future<void> openAndroidAutoProjection() =>
-      _channel.invokeMethod<void>('openAndroidAuto');
-  Future<void> openAndroidAutoScreen() =>
-      _channel.invokeMethod<void>('openAndroidAuto');
-  Future<void> startAndroidAuto() =>
-      _channel.invokeMethod<void>('openAndroidAuto');
-  Future<void> launchAndroidAuto() =>
-      _channel.invokeMethod<void>('openAndroidAuto');
-  Future<void> connectAndroidAuto() =>
-      _channel.invokeMethod<void>('openAndroidAuto');
-  Future<void> showAndroidAuto() =>
-      _channel.invokeMethod<void>('openAndroidAuto');
   Future<void> launchApp(String packageName) =>
       _channel.invokeMethod<void>('launchApp', {'packageName': packageName});
   Future<double> getVolume() async {

@@ -35,6 +35,11 @@ void main() {
     ]);
   });
 
+  test('Android Auto uses its explicit native method', () async {
+    await DeviceService().openAndroidAuto();
+    expect(calls.single.method, 'openAndroidAuto');
+  });
+
   test('volume is read and writes are clamped', () async {
     final service = DeviceService();
     expect(await service.getVolume(), .6);

@@ -9,8 +9,8 @@ import '../../widgets/module_label.dart';
 import '../media/media_controller.dart';
 import '../media/media_module.dart';
 import '../weather/weather_module.dart';
-import 'clock_module.dart';
 import 'android_auto_screen.dart';
+import 'clock_module.dart';
 import 'device_sheets.dart';
 import 'navigation_module.dart';
 import 'quick_actions.dart';
@@ -133,7 +133,6 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   }
 
   void _openAndroidAuto() {
-    _runDeviceAction(_device.openAndroidAuto);
     Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (_) => AndroidAutoScreen(device: _device),
