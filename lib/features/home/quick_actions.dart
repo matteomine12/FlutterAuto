@@ -10,6 +10,7 @@ class QuickActions extends StatelessWidget {
     required this.onMedia,
     required this.onPhone,
     required this.onSettings,
+    required this.onAndroidAuto,
     required this.volume,
     required this.onVolumeChanged,
     required this.onVolumeChangeEnd,
@@ -19,6 +20,7 @@ class QuickActions extends StatelessWidget {
   final VoidCallback onMedia;
   final VoidCallback onPhone;
   final VoidCallback onSettings;
+  final VoidCallback onAndroidAuto;
   final double? volume;
   final ValueChanged<double>? onVolumeChanged;
   final ValueChanged<double>? onVolumeChangeEnd;
@@ -45,6 +47,11 @@ class QuickActions extends StatelessWidget {
             onTap: onMedia,
           ),
           _Action(icon: Icons.phone_outlined, label: 'Phone', onTap: onPhone),
+          _Action(
+            icon: Icons.android,
+            label: 'Android Auto',
+            onTap: onAndroidAuto,
+          ),
           _Action(
             icon: Icons.tune_rounded,
             label: 'Settings',
