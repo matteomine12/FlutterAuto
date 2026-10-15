@@ -22,9 +22,9 @@ class _AndroidAutoScreenState extends State<AndroidAutoScreen> {
     try {
       await _device.openAndroidAuto();
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Android Auto opened.')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('Android Auto opened.')));
       }
     } on MissingPluginException {
       if (mounted) {
